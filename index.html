@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang=“ja”>
+<head>
+    <meta charset=“utf-8”> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>To_Do_List</title> 
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <!-- Vue.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="toDoList" class='container mt-5'>
+
+        <div class="input-group mb-3 w-50">
+            <input type="text" class="form-control" placeholder="write a task" v-model="title">
+            <button class="btn btn-outline-secondary" type="button" v-on:click="addTask(title, contents)" v-bind:disabled="!canAddTask()">Create</button>
+            <input type="text" class="form-control" placeholder="write a contents" v-model="contents">
+        </div>
+                
+        <div v-if="taskList.length === 0">
+            <p>まだ TODO リストがありません</p>
+        </div>
+    
+        <div class="card w-50 my-1" v-for="task in taskList">
+            <div class="card-body">
+                <h5 class="card-title">TODO {{ task.ordinalNumber }} : {{ task.title }}</h5>
+                <div>{{ task.contents }}</div>
+                <a href="#" class="btn btn-primary mt-2" v-on:click="deleteTask(task.ordinalNumber)">Delete</a>
+            </div>
+        </div>
+    
+    </div>
+
+    <script type="text/javascript" src="main.js"></script>
+</body>
+</html>

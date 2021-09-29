@@ -1,0 +1,23 @@
+@startuml
+'Modelの設計
+class Task{
+    - int ordinalNumber
+    - String title
+    - String contents
+
+    + Task(ordinalNumber:int, title: String, contents: String)
+}
+
+class VueToDoList{
+    - String title
+    - String contents
+    - Task[] taskList
+    - int taskCreateCount= 0
+
+    + VueToDoList()
+    + addTask(title: String, contents: String)
+    + canAddTask(): boolean
+    + deleteTask(ordinalNumber: int): void
+}
+
+@enduml
