@@ -1,8 +1,7 @@
 class Task{
-    constructor(ordinalNumber, title, contents){
+    constructor(ordinalNumber, title){
         this.ordinalNumber = ordinalNumber;
         this.title = title;
-        this.contents = contents;
     }
 }
 
@@ -10,21 +9,19 @@ var toDoList = new Vue({
     el: "#toDoList",
     data: {
         title: "",
-        contents: "",
         taskList: [],
         taskCreateCount: 0
     },
 
     methods: {
-        addTask: function(title, contents){
-            this.taskList.push(new Task(this.taskCreateCount + 1, title, contents));
+        addTask: function(title){
+            this.taskList.push(new Task(this.taskCreateCount + 1, title));
             this.title = "";
-            this.contents = "";
             this.taskCreateCount++;
         },
 
         canAddTask: function(){
-            return this.title.length !== 0 && this.contents.length !== 0;
+            return this.title.length !== 0;
         },
 
         deleteTask: function(ordinalNumber){

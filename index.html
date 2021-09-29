@@ -20,8 +20,7 @@
 
         <div class="input-group mb-3 w-50">
             <input type="text" class="form-control" placeholder="write a task" v-model="title">
-            <button class="btn btn-outline-secondary" type="button" v-on:click="addTask(title, contents)" v-bind:disabled="!canAddTask()">Create</button>
-            <input type="text" class="form-control" placeholder="write a contents" v-model="contents">
+            <button class="btn btn-outline-secondary" type="button" v-on:click="addTask(title)" v-bind:disabled="!canAddTask()">Create</button>
         </div>
                 
         <div v-if="taskList.length === 0">
@@ -31,7 +30,6 @@
         <div class="card w-50 my-1" v-for="task in taskList">
             <div class="card-body">
                 <h5 class="card-title">TODO {{ task.ordinalNumber }} : {{ task.title }}</h5>
-                <div>{{ task.contents }}</div>
                 <a href="#" class="btn btn-primary mt-2" v-on:click="deleteTask(task.ordinalNumber)">Delete</a>
             </div>
         </div>

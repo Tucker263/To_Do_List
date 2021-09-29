@@ -3,19 +3,17 @@
 class Task{
     - int ordinalNumber
     - String title
-    - String contents
 
-    + Task(ordinalNumber:int, title: String, contents: String)
+    + Task(ordinalNumber:int, title: String)
 }
 
 class VueToDoList{
     - String title
-    - String contents
     - Task[] taskList
     - int taskCreateCount= 0
 
     + VueToDoList()
-    + addTask(title: String, contents: String)
+    + addTask(title: String)
     + canAddTask(): boolean
     + deleteTask(ordinalNumber: int): void
 }
