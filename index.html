@@ -16,21 +16,36 @@
 </head>
 <body>
 
-    <div id="toDoList" class='container mt-5'>
+    <div id="toDoList">
 
-        <div class="input-group mb-3 w-50">
-            <input type="text" class="form-control" placeholder="write a task" v-model="title">
-            <button class="btn btn-outline-secondary" type="button" v-on:click="addTask(title)" v-bind:disabled="!canAddTask()">Create</button>
-        </div>
-                
-        <div v-if="taskList.length === 0">
-            <p>まだ TODO リストがありません</p>
+        <div class="bg-primary text-white text-center p-1">
+            <h1>To Do List</h1>
         </div>
     
-        <div class="card w-50 my-1" v-for="task in taskList">
-            <div class="card-body">
-                <h5 class="card-title">TODO {{ task.ordinalNumber }} : {{ task.title }}</h5>
-                <a href="#" class="btn btn-primary mt-2" v-on:click="deleteTask(task.ordinalNumber)">Delete</a>
+        <div class="bg-light vh-100">
+            <div class="d-flex justify-content-center pt-3 pb-3 container">
+                <div class="input-group w-50">
+                    <input type="text" class="form-control" placeholder="write a task" v-model="title">
+                    <button class="btn btn-outline-secondary" type="button" v-on:click="addTask()" v-bind:disabled="!canAddTask()">Create</button>
+                </div>
+            </div>
+                    
+            <div class="d-flex justify-content-center container">
+                <div v-if="taskList.length === 0">
+                    <p>まだ TODO リストがありません</p>
+                </div>
+            </div>
+    
+            <div class="d-flex justify-content-center container" v-for="task in taskList">
+                <div class="card w-50 my-1">
+                    <div class="card-body">
+                        <h5>TODO {{ task.ordinalNumber }} : {{ task.title }}</h5>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p>entryDate: {{ task.entryDate }}</p>
+                            <i class="fas fa-trash fa-2x text-primary buttonHover" v-on:click="deleteTask(task.ordinalNumber)"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     

@@ -1,0 +1,4 @@
+/* ホバー */
+.buttonHover:hover{
+    opacity: 0.5;
+}

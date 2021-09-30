@@ -3,8 +3,9 @@
 class Task{
     - int ordinalNumber
     - String title
+    - String entryDate
 
-    + Task(ordinalNumber:int, title: String)
+    + Task(ordinalNumber:int, title: String, entryDate: String)
 }
 
 class VueToDoList{
@@ -16,6 +17,7 @@ class VueToDoList{
     + addTask(title: String)
     + canAddTask(): boolean
     + deleteTask(ordinalNumber: int): void
+    + getEntryDate(): String
 }
 
 @enduml
